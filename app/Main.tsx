@@ -24,6 +24,9 @@ import bvdImg from '../public/static/images/bvd.png'
 import srPinnImg from '../public/static/images/sr-pinn.png'
 import teamLinchaoHe from '../public/static/images/team/linchao-he.jpg'
 import teamZhipenLuo from '../public/static/images/team/zhipen-luo.jpg'
+import collabCuraeHealth from '../public/static/images/collaborators/Curae health.png'
+import collabLead from '../public/static/images/collaborators/lead.png'
+import collabOptiscan from '../public/static/images/collaborators/Optiscan.png'
 
 /** 本地图片路径 → import 后的资源路径，解决部署时 basePath 前缀问题 */
 const LOCAL_IMAGE_MAP: Record<string, string> = {
@@ -43,6 +46,9 @@ const LOCAL_IMAGE_MAP: Record<string, string> = {
   '/static/images/team/zhenhua-chen.jpg': teamZhenhuaChen.src,
   '/static/images/team/zhipen-luo.jpg': teamZhipenLuo.src,
   '/static/images/team/team-photo.jpg': teamPhoto.src,
+  '/static/images/collaborators/Curae health.png': collabCuraeHealth.src,
+  '/static/images/collaborators/lead.png': collabLead.src,
+  '/static/images/collaborators/Optiscan.png': collabOptiscan.src,
 }
 function resolveImage(src: string): string {
   return LOCAL_IMAGE_MAP[src] || src
@@ -111,6 +117,12 @@ const EXTRA_PROJECTS = [
     image: '/static/images/knee agent.png',
     noLink: true,
   },
+]
+
+const COLLABORATORS = [
+  { name: 'Curae Health', image: '/static/images/collaborators/Curae health.png' },
+  { name: 'LEAD', image: '/static/images/collaborators/lead.png' },
+  { name: 'Optiscan', image: '/static/images/collaborators/Optiscan.png' },
 ]
 
 const RESEARCH_ITEMS = [
@@ -509,6 +521,30 @@ export default function Home({
               </a>
               .
             </p>
+          </div>
+        </section>
+      </FadeInSection>
+
+      {/* Collaborators */}
+      <FadeInSection className="w-full">
+        <div className="divider-gradient" />
+        <section className="py-16 md:py-24">
+          <h2 className="text-foreground mb-10 text-center text-2xl font-bold tracking-tight md:text-3xl">
+            Our Collaborators
+          </h2>
+          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
+            {COLLABORATORS.map((c) => (
+              <div key={c.name} className="relative h-16 w-40 md:h-20 md:w-48">
+                <Image
+                  src={resolveImage(c.image)}
+                  alt={c.name}
+                  fill
+                  className="object-contain grayscale dark:invert"
+                  sizes="192px"
+                  unoptimized
+                />
+              </div>
+            ))}
           </div>
         </section>
       </FadeInSection>
