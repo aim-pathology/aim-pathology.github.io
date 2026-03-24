@@ -120,9 +120,17 @@ const EXTRA_PROJECTS = [
 ]
 
 const COLLABORATORS = [
-  { name: 'Curae Health', image: '/static/images/collaborators/Curae health.png' },
-  { name: 'LEAD', image: '/static/images/collaborators/lead.png' },
-  { name: 'Optiscan', image: '/static/images/collaborators/Optiscan.png' },
+  {
+    name: 'Curae Health',
+    image: '/static/images/collaborators/Curae health.png',
+    lightInvert: true,
+  },
+  { name: 'LEAD', image: '/static/images/collaborators/lead.png', lightInvert: false },
+  {
+    name: 'Optiscan',
+    image: '/static/images/collaborators/Optiscan.png',
+    lightInvert: true,
+  },
 ]
 
 const RESEARCH_ITEMS = [
@@ -539,7 +547,7 @@ export default function Home({
                   src={resolveImage(c.image)}
                   alt={c.name}
                   fill
-                  className="object-contain grayscale dark:invert"
+                  className={`object-contain grayscale ${c.lightInvert ? 'invert dark:invert-0' : 'dark:invert'}`}
                   sizes="192px"
                   unoptimized
                 />
